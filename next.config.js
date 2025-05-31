@@ -3,9 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['xtyl.digital']
-  },
-  experimental: {
-    optimizeCss: true
   }
 }
 
