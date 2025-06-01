@@ -2,10 +2,14 @@ import React from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import Header from '@/components/Header'
-import AnimatedText from '@/components/AnimatedText'
-import ProjectsGrid from '@/components/ProjectsGrid'
+import StatsSection from '@/components/StatsSection'
 import CaseStudies from '@/components/CaseStudies'
+import OnboardingSection from '@/components/OnboardingSection'
+import ServicesSection from '@/components/ServicesSection'
+import AdditionalServicesSection from '@/components/AdditionalServicesSection'
 import PotentialSection from '@/components/PotentialSection'
+import ServiceSteps from '@/components/ServiceSteps'
+import CompanyStatus from '@/components/CompanyStatus'
 import Link from 'next/link'
 
 export default function Home() {
@@ -79,136 +83,83 @@ export default function Home() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-xtyl-black via-[#1A2C2C] to-xtyl-black opacity-50"></div>
-          
-          {/* Gradient Orbs */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-20 animate-pulse delay-1000"></div>
+        <StatsSection />
 
-          <div className="container mx-auto relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Faturamento */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105 cursor-pointer"
-              >
-                <motion.h3 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-4xl md:text-5xl font-clash-display font-bold text-white mb-4"
-                >
-                  +40 Milhões
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-gray-300 text-lg"
-                >
-                  Faturados para nossos Clientes
-                </motion.p>
-              </motion.div>
-
-              {/* Investimento */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-8 hover:bg-[#1A2C2C]/40 transition-all duration-300 hover:scale-105 cursor-pointer"
-              >
-                <motion.h3 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="text-4xl md:text-5xl font-clash-display font-bold text-[#40E0D0] mb-4 [text-shadow:_0_2px_10px_rgb(64_224_208_/_20%)]"
-                >
-                  +1.5 Milhões
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-gray-300 text-lg"
-                >
-                  Investidos em anúncios
-                </motion.p>
-              </motion.div>
-
-              {/* Anúncios */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-8 hover:bg-[#1A2C2C]/40 transition-all duration-300 hover:scale-105 cursor-pointer"
-              >
-                <motion.h3 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="text-4xl md:text-5xl font-clash-display font-bold text-[#40E0D0] mb-4 [text-shadow:_0_2px_10px_rgb(64_224_208_/_20%)]"
-                >
-                  +5 Mil
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  className="text-gray-300 text-lg"
-                >
-                  Anúncios criados no Meta
-                </motion.p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <PotentialSection />
-
+        {/* Cases Section */}
         <CaseStudies />
 
-        {/* About Section */}
-        <section className="min-h-screen flex items-center justify-center py-32">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
-              viewport={{ once: true }}
-              className="max-w-5xl mx-auto text-center"
-            >
-              <h2 className="font-clash-display text-5xl md:text-7xl font-bold mb-12 text-gradient">
-                Crafting Digital Experiences
-              </h2>
-              <p className="font-satoshi text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
-                We are a creative development studio specializing in immersive digital experiences.
-                Our team combines cutting-edge technology with innovative design to create
-                memorable and impactful solutions that push the boundaries of digital interaction.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        {/* Onboarding Section */}
+        <OnboardingSection />
 
-        {/* Projects Section */}
-        <section className="min-h-screen py-32">
+        {/* Serviços Principais */}
+        <ServicesSection />
+
+        {/* Serviços Adicionais */}
+        <AdditionalServicesSection />
+
+        {/* Potential Section */}
+        <PotentialSection />
+
+        {/* Etapas dos Nossos Serviços */}
+        <ServiceSteps />
+
+        {/* Onde está sua empresa hoje */}
+        <CompanyStatus />
+
+        {/* Botão WhatsApp */}
+        <div className="fixed bottom-8 right-8 z-50">
+          <Link
+            href="https://wa.me/seu-numero"
+            className="bg-[#25D366] hover:bg-[#20BD5C] text-white font-medium p-4 rounded-full flex items-center gap-2 transition-colors shadow-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2Z"/>
+            </svg>
+            Fale Conosco
+          </Link>
+        </div>
+
+        {/* Footer */}
+        <footer className="bg-xtyl-black py-12">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
-              viewport={{ once: true }}
-              className="text-center mb-24"
-            >
-              <h2 className="font-clash-display text-5xl md:text-7xl font-bold mb-8 text-gradient">
-                Selected Works
-              </h2>
-            </motion.div>
-            <ProjectsGrid />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div>
+                <h3 className="text-white font-clash-display font-bold text-xl mb-4">XTYL Digital</h3>
+                <p className="text-gray-400">
+                  Sua assessoria de marketing especializada em aumentar suas vendas.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-white font-clash-display font-bold text-xl mb-4">Serviços</h3>
+                <ul className="space-y-2">
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Marketing Digital</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Tráfego Pago</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Gestão de Redes Sociais</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-white font-clash-display font-bold text-xl mb-4">Contato</h3>
+                <ul className="space-y-2">
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">WhatsApp</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Instagram</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-white font-clash-display font-bold text-xl mb-4">Legal</h3>
+                <ul className="space-y-2">
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Termos de Uso</a></li>
+                </ul>
+              </div>
+            </div>
+            <div className="border-t border-white/10 mt-12 pt-8 text-center">
+              <p className="text-gray-400">
+                © {new Date().getFullYear()} XTYL Digital. Todos os direitos reservados.
+              </p>
+            </div>
           </div>
-        </section>
+        </footer>
       </main>
     </>
   )
