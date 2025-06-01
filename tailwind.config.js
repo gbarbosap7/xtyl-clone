@@ -4,18 +4,29 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/styles/**/*.css',
   ],
   theme: {
     extend: {
-      colors: {
-        'xtyl-black': '#0D0D0D',
-        'xtyl-white': '#FFFFFF',
-        'xtyl-gray': '#1A1A1A',
-      },
       fontFamily: {
         'clash-display': ['Clash Display', 'sans-serif'],
-        'satoshi': ['Satoshi', 'sans-serif'],
+      },
+      colors: {
+        'xtyl-black': '#0A1716',
+      },
+      keyframes: {
+        'gradient-flow': {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          },
+        },
+      },
+      animation: {
+        'gradient-flow': 'gradient-flow 2s ease infinite',
       },
     },
   },
