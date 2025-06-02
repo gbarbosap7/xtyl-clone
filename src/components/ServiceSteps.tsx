@@ -1,11 +1,18 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 const ServiceSteps = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
+  });
+
+  // Aplicando spring animation para suavizar o scroll
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
   });
 
   const steps = [
@@ -58,11 +65,16 @@ const ServiceSteps = () => {
               <motion.div
                 className="absolute top-0 w-full bg-xtyl-primary origin-top"
                 style={{
-                  scaleY: scrollYProgress,
+                  scaleY: smoothProgress,
                   height: '100%'
                 }}
                 initial={{ scaleY: 0 }}
-                transition={{ duration: 0, ease: "linear" }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 30,
+                  restDelta: 0.001
+                }}
               />
             </div>
 
