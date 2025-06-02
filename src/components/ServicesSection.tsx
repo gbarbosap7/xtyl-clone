@@ -49,14 +49,13 @@ export default function ServicesSection() {
   };
 
   return (
-    <SectionWrapper className="py-20 px-4 relative bg-xtyl-black">
-      {/* Static Gradient Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -left-1/4 top-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-20" />
-        <div className="absolute -right-1/4 bottom-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-20" />
-      </div>
+    <SectionWrapper className="py-20 px-4 relative bg-xtyl-black border-t border-white/5 section-container">
+      <div className="container mx-auto max-w-6xl">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-10" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-10" />
+        </div>
 
-      <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Phone Image */}
           <div className="section-element relative">
