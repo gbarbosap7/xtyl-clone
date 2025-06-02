@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 const StatsSection = () => {
   return (
     <section className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-xtyl-black via-[#1A2C2C] to-xtyl-black opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-xtyl-black via-xtyl-black/50 to-xtyl-black opacity-50"></div>
       
       {/* Gradient Orbs - Static */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-20"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-20"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-xtyl-primary rounded-full filter blur-[128px] opacity-10"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-xtyl-accent rounded-full filter blur-[128px] opacity-10"></div>
 
       <div className="container mx-auto relative">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -17,7 +17,7 @@ const StatsSection = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="backdrop-blur-xl bg-xtyl-primary/5 border border-xtyl-primary/20 rounded-3xl p-8 hover:bg-xtyl-primary/10 transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             <motion.h3 
               initial={{ opacity: 0, y: 20 }}
@@ -42,13 +42,13 @@ const StatsSection = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-8 hover:bg-[#1A2C2C]/40 transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="backdrop-blur-xl bg-xtyl-primary/5 border border-xtyl-primary/20 rounded-3xl p-8 hover:bg-xtyl-primary/10 transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             <motion.h3 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-4xl md:text-5xl font-clash-display font-bold text-[#40E0D0] mb-4 [text-shadow:_0_2px_10px_rgb(64_224_208_/_20%)]"
+              className="text-4xl md:text-5xl font-clash-display font-bold text-xtyl-primary mb-4"
             >
               +1.5 Milhões
             </motion.h3>
@@ -67,13 +67,13 @@ const StatsSection = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-8 hover:bg-[#1A2C2C]/40 transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="backdrop-blur-xl bg-xtyl-primary/5 border border-xtyl-primary/20 rounded-3xl p-8 hover:bg-xtyl-primary/10 transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             <motion.h3 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-4xl md:text-5xl font-clash-display font-bold text-[#40E0D0] mb-4 [text-shadow:_0_2px_10px_rgb(64_224_208_/_20%)]"
+              className="text-4xl md:text-5xl font-clash-display font-bold text-xtyl-primary mb-4"
             >
               +5 Mil
             </motion.h3>

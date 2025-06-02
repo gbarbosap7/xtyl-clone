@@ -9,9 +9,12 @@ module.exports = {
     extend: {
       fontFamily: {
         'clash-display': ['Clash Display', 'sans-serif'],
+        'satoshi': ['Satoshi', 'sans-serif'],
       },
       colors: {
-        'xtyl-black': '#0A1716',
+        'xtyl-black': '#0F172A',
+        'xtyl-primary': '#40E0D0',
+        'xtyl-accent': '#4ADE80',
       },
       keyframes: {
         'gradient-flow': {
