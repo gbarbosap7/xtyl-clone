@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function PotentialSection() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
+
   return (
     <section className="py-20 px-4 relative bg-xtyl-black">
       <div className="container mx-auto max-w-6xl relative">
@@ -10,8 +20,25 @@ export default function PotentialSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-8 md:p-12 overflow-hidden relative"
+          onMouseMove={handleMouseMove}
+          className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-8 md:p-12 overflow-hidden relative group"
         >
+          {/* Gradiente que segue o cursor */}
+          <div
+            className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(circle 200px at var(--x) var(--y), rgba(64, 224, 208, 0.15), transparent 100%)',
+              width: '100%',
+              height: '100%',
+              left: 0,
+              top: 0,
+              transform: 'translate(-50%, -50%)',
+              pointerEvents: 'none',
+              '--x': `${mousePosition.x}px`,
+              '--y': `${mousePosition.y}px`
+            } as React.CSSProperties}
+          />
+
           {/* Conteúdo */}
           <div className="relative z-10">
             <h2 className="text-[#40E0D0] text-3xl md:text-4xl font-clash-display font-bold mb-6">

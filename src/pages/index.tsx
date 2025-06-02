@@ -32,16 +32,16 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-block bg-white/5 rounded-full px-6 py-2 mb-8"
+              className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-white/20"
             >
-              <p className="text-xtyl-white text-sm">Procurando uma Assessoria de Marketing?</p>
+              <p className="text-xtyl-white text-sm font-medium">Procurando uma Assessoria de Marketing?</p>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-clash-display font-bold text-xtyl-white mb-4"
+              className="text-5xl md:text-7xl font-clash-display font-bold text-xtyl-white mb-4 drop-shadow-lg"
             >
               O X da Questão é{' '}
               <span className="bg-gradient-to-r from-[#40E0D0] to-[#4ADE80] text-transparent bg-clip-text">
@@ -53,7 +53,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-400 mb-12"
+              className="text-lg md:text-xl text-gray-300 mb-12 text-shadow"
             >
               Tenha uma equipe especializada para o seu sucesso.
             </motion.p>
@@ -66,21 +66,44 @@ export default function Home() {
             >
               <Link
                 href="https://wa.me/seu-numero"
-                className="bg-gradient-to-r from-[#40E0D0] to-[#4ADE80] hover:opacity-90 text-xtyl-black font-medium px-8 py-3 rounded-full flex items-center gap-2 transition-all"
+                className="bg-gradient-to-r from-[#40E0D0] to-[#4ADE80] hover:opacity-90 text-xtyl-black font-medium px-8 py-3 rounded-full flex items-center gap-2 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.56 20.16 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.52 3.67 12.05 3.67ZM8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" />
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2Z" />
                 </svg>
                 Quero mais informações
               </Link>
               <Link
                 href="/cases"
-                className="border border-white/20 hover:bg-white/10 text-xtyl-white font-medium px-8 py-3 rounded-full transition-colors"
+                className="border border-white/20 hover:bg-white/10 text-xtyl-white font-medium px-8 py-3 rounded-full transition-all hover:border-white/40 hover:scale-105 transform backdrop-blur-sm"
               >
                 Ver cases de sucesso
               </Link>
             </motion.div>
           </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <span className="text-gray-400 text-sm">Scroll para descobrir</span>
+            <motion.div
+              animate={{
+                y: [0, 10, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="w-5 h-8 border-2 border-gray-400 rounded-full flex items-start justify-center p-1"
+            >
+              <div className="w-1 h-2 bg-gray-400 rounded-full" />
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* Stats Section */}

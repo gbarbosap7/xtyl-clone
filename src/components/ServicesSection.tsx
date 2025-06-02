@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionTitle from './SectionTitle';
 import SectionWrapper from './SectionWrapper';
@@ -6,6 +6,11 @@ import SectionWrapper from './SectionWrapper';
 interface Service {
   title: string;
   description: string[];
+}
+
+interface MousePosition {
+  x: number;
+  y: number;
 }
 
 const services: Service[] = [
@@ -30,6 +35,19 @@ const services: Service[] = [
 ];
 
 export default function ServicesSection() {
+  const [mousePosition, setMousePosition] = useState<{ [key: string]: MousePosition }>({});
+
+  const handleMouseMove = (e: React.MouseEvent, serviceTitle: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      ...mousePosition,
+      [serviceTitle]: {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      }
+    });
+  };
+
   return (
     <SectionWrapper className="py-20 px-4 relative min-h-screen flex items-center bg-xtyl-black">
       {/* Gradient Orbs */}
@@ -83,33 +101,36 @@ export default function ServicesSection() {
               {services.map((service, index) => (
                 <div
                   key={service.title}
-                  className="section-element backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-2xl p-6 hover:bg-[#1A2C2C]/40 transition-all duration-300"
-                  style={{ transitionDelay: `${index * 200}ms` }}
+                  className="section-element relative overflow-hidden group"
+                  onMouseMove={(e) => handleMouseMove(e, service.title)}
                 >
-                  <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
-                  <ul className="space-y-3">
-                    {service.description.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-gray-300"
-                      >
-                        <svg
-                          className="w-5 h-5 text-[#40E0D0] mt-1 flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Card Background with Spotlight Effect */}
+                  <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-3xl transition-all duration-300 group-hover:bg-white/10" />
+                  
+                  {/* Spotlight Effect */}
+                  <div
+                    className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(circle 100px at ${mousePosition[service.title]?.x || 0}px ${mousePosition[service.title]?.y || 0}px, rgba(255,255,255,0.1), transparent)`,
+                      width: '100%',
+                      height: '100%'
+                    }}
+                  />
+
+                  {/* Content */}
+                  <div className="relative p-8 border border-white/10 rounded-3xl">
+                    <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-6">
+                      {service.title}
+                    </h3>
+                    <ul className="space-y-4">
+                      {service.description.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3 text-gray-300">
+                          <span className="text-xtyl-primary mt-1">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>

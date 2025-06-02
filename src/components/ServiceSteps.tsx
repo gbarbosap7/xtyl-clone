@@ -5,8 +5,10 @@ const ServiceSteps = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start end", "end start"]
   });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const steps = [
     {
@@ -48,11 +50,8 @@ const ServiceSteps = () => {
             {/* Linha da Timeline */}
             <div className="absolute left-4 top-0 bottom-0 w-px bg-xtyl-primary/20">
               <motion.div
-                className="absolute top-0 w-full bg-xtyl-primary"
-                style={{
-                  height: scrollYProgress,
-                  scaleY: scrollYProgress
-                }}
+                className="absolute top-0 w-full bg-xtyl-primary origin-top"
+                style={{ height: lineHeight }}
               />
             </div>
 
@@ -63,11 +62,18 @@ const ServiceSteps = () => {
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   className="relative pl-12"
                 >
                   {/* Círculo na Timeline */}
-                  <div className="absolute left-0 w-8 h-8 bg-xtyl-black border-2 border-xtyl-primary rounded-full -translate-x-3" />
+                  <motion.div
+                    className="absolute left-0 w-8 h-8 bg-xtyl-black border-2 border-xtyl-primary rounded-full -translate-x-3"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.2 }}
+                  />
                   
                   {/* Conteúdo */}
                   <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10">
