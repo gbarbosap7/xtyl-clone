@@ -10,6 +10,7 @@ import AdditionalServicesSection from '@/components/AdditionalServicesSection'
 import PotentialSection from '@/components/PotentialSection'
 import ServiceSteps from '@/components/ServiceSteps'
 import CompanyStatus from '@/components/CompanyStatus'
+import WhatsAppSection from '@/components/WhatsAppSection'
 import Link from 'next/link'
 
 export default function Home() {
@@ -105,6 +106,9 @@ export default function Home() {
 
         {/* Onde está sua empresa hoje */}
         <CompanyStatus />
+
+        {/* Seção WhatsApp */}
+        <WhatsAppSection />
 
         {/* Botão WhatsApp */}
         <div className="fixed bottom-8 right-8 z-50">

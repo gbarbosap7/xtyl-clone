@@ -1,91 +1,100 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 
 const CompanyStatus = () => {
-  const statuses = [
+  const levels = [
     {
-      title: 'Iniciando',
-      description: 'Você está começando seu negócio e precisa estabelecer presença digital.',
+      level: 2,
+      title: 'Assessoria Avançada',
+      description: 'Empresa com faturamento sólido e time comercial estruturado, focada em escalar os resultados.',
       features: [
-        'Criação de identidade digital',
-        'Definição de público-alvo',
-        'Estratégia inicial de marketing'
+        'Dados e análises',
+        'Estratégia personalizada',
+        'Automação de marketing',
+        'CRM e integrações'
       ]
     },
     {
-      title: 'Crescendo',
-      description: 'Seu negócio já tem presença online, mas precisa expandir e otimizar.',
+      level: 1,
+      title: 'Assessoria de Marketing',
+      description: 'Empresa com produto validado e carteira de clientes estabelecida, buscando iniciar um crescimento mais acelerado.',
       features: [
-        'Otimização de campanhas',
-        'Expansão de canais',
-        'Análise de métricas'
+        'Tráfego pago',
+        'Sites/Landing Pages',
+        'Validação de canais'
       ]
     },
     {
-      title: 'Escalando',
-      description: 'Você busca escalar suas operações e maximizar resultados.',
+      level: 0,
+      title: 'Mentoria | Consultoria',
+      description: 'Empresa em fase inicial, ainda validando o produto.',
       features: [
-        'Automação de processos',
-        'Estratégias avançadas',
-        'Expansão de mercado'
+        'Estratégia',
+        'Validação de produto',
+        'Planejamento inicial'
       ]
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#1A2C2C] to-xtyl-black">
+    <section className="py-20 bg-xtyl-black relative">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-clash-display font-bold text-white mb-6">
-            Onde Está Sua Empresa Hoje?
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Identificamos a melhor estratégia para cada momento do seu negócio
-          </p>
-        </motion.div>
+        <SectionTitle
+          subtitle="Status da Empresa"
+          title="Onde sua Empresa está hoje?"
+          highlightedWord="Empresa"
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {statuses.map((status, index) => (
-            <motion.div
-              key={status.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-300"
-            >
-              <h3 className="text-2xl font-clash-display font-bold text-[#40E0D0] mb-4">
-                {status.title}
-              </h3>
-              <p className="text-gray-300 mb-6">
-                {status.description}
-              </p>
-              <ul className="space-y-3">
-                {status.features.map((feature, i) => (
-                  <li key={i} className="flex items-center text-gray-400">
-                    <svg
-                      className="w-5 h-5 text-[#4ADE80] mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+        <div className="relative">
+          {/* Linha conectora vertical */}
+          <div className="absolute left-[30px] md:left-[120px] top-0 bottom-0 w-px bg-xtyl-primary/20" />
+
+          {/* Níveis */}
+          <div className="space-y-24">
+            {levels.map((level, index) => (
+              <motion.div
+                key={level.level}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="relative flex items-start gap-8"
+              >
+                {/* Nível */}
+                <div className="flex-shrink-0 w-16 md:w-32">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">Nível</span>
+                    <span className="text-2xl md:text-3xl font-clash-display font-bold text-xtyl-primary">
+                      {level.level}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Conteúdo */}
+                <div className="flex-grow">
+                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10">
+                    <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-4">
+                      {level.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6">
+                      {level.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {level.features.map((feature, i) => (
+                        <li key={i} className="flex items-center text-gray-300">
+                          <span className="mr-2 text-xtyl-primary">•</span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Círculo na linha */}
+                <div className="absolute left-[26px] md:left-[116px] top-6 w-8 h-8 bg-xtyl-black border-2 border-xtyl-primary rounded-full" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionWrapper from './SectionWrapper';
 
 interface ServiceCard {
   title: string;
@@ -59,44 +60,39 @@ const services: ServiceCard[] = [
 
 export default function AdditionalServicesSection() {
   return (
-    <section className="py-20 px-4 relative bg-xtyl-black">
+    <SectionWrapper className="py-20 px-4 relative bg-xtyl-black border-t border-white/5">
       <div className="container mx-auto max-w-6xl">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Landing Pages Preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="col-span-1 md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-3xl"
-          >
+          <div className="section-element col-span-1 md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-3xl">
             <div className="absolute inset-0 bg-gradient-to-r from-[#40E0D0]/10 to-transparent" />
             <img
               src="/landing-preview.jpg"
               alt="Landing Page Preview"
               className="w-full h-full object-cover rounded-3xl"
             />
-          </motion.div>
+          </div>
 
           {/* Service Cards */}
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-6 hover:bg-[#1A2C2C]/40 transition-all duration-300 group"
+              className="section-element backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-3xl p-6 hover:bg-[#1A2C2C]/40 transition-all duration-300 group"
+              style={{ transitionDelay: `${index * 200}ms` }}
             >
               <div className="flex flex-col h-full">
                 <div className="text-[#40E0D0] mb-4 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {service.title}
+                </h3>
                 <p className="text-gray-400 text-sm leading-relaxed flex-grow">
                   {service.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -106,6 +102,6 @@ export default function AdditionalServicesSection() {
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-10 animate-pulse delay-1000" />
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 } 

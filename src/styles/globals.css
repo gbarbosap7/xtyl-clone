@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-xtyl-black text-white;
+}
+
+/* Estilo para a barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-xtyl-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-xtyl-primary/20 rounded-full;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-xtyl-primary/40;
+}
+
+/* Classe para animação de seções */
+.section-container {
+  @apply opacity-0 translate-y-20;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-container.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Classe para animação de elementos dentro das seções */
+.section-element {
+  @apply opacity-0 translate-y-10;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-element.visible {
+  @apply opacity-100 translate-y-0;
+}
+
 @font-face {
   font-family: 'Clash Display';
   src: url('/fonts/ClashDisplay-Variable.woff2') format('woff2');

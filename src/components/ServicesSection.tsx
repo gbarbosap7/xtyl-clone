@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
+import SectionWrapper from './SectionWrapper';
 
 interface Service {
   title: string;
@@ -29,32 +31,22 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 px-4 relative min-h-screen flex items-center bg-gradient-to-b from-xtyl-black to-[#1A2C2C]">
+    <SectionWrapper className="py-20 px-4 relative min-h-screen flex items-center bg-xtyl-black">
       {/* Gradient Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -left-1/4 top-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-20 animate-pulse" />
         <div className="absolute -right-1/4 bottom-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-20 animate-pulse delay-1000" />
       </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Phone Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative"
-          >
+          <div className="section-element relative">
             {/* Floating Elements */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -top-12 -left-12 bg-white rounded-xl p-4 shadow-lg backdrop-blur-sm bg-opacity-10 border border-white/10"
-            >
+            <div className="absolute -top-12 -left-12 bg-white rounded-xl p-4 shadow-lg backdrop-blur-sm bg-opacity-10 border border-white/10">
               <div className="text-[#40E0D0] font-bold">Vendas</div>
               <div className="text-2xl font-bold text-white">R$ 618.000</div>
-            </motion.div>
+            </div>
 
             {/* Main Phone Image */}
             <div className="relative mx-auto max-w-sm">
@@ -67,27 +59,17 @@ export default function ServicesSection() {
             </div>
 
             {/* Stats Element */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="absolute -bottom-8 -right-8 bg-[#1A2C2C] rounded-xl p-4 shadow-lg backdrop-blur-sm border border-[#40E0D0]/20"
-            >
+            <div className="absolute -bottom-8 -right-8 bg-[#1A2C2C] rounded-xl p-4 shadow-lg backdrop-blur-sm border border-[#40E0D0]/20">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-[#40E0D0] rounded-full" />
                 <div className="text-white">14.322 Conversões</div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right Column - Content */}
           <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-4"
-            >
+            <div className="section-element space-y-4">
               <span className="text-sm text-[#40E0D0] px-4 py-1 rounded-full bg-[#1A2C2C]/50 backdrop-blur-sm inline-block">
                 Nossos Serviços
               </span>
@@ -95,25 +77,20 @@ export default function ServicesSection() {
                 O que a <span className="text-[#40E0D0]">XTYL</span><br />
                 pode fazer por você?
               </h2>
-            </motion.div>
+            </div>
 
             <div className="space-y-6">
               {services.map((service, index) => (
-                <motion.div
+                <div
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 * (index + 1) }}
-                  className="backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-2xl p-6 hover:bg-[#1A2C2C]/40 transition-all duration-300"
+                  className="section-element backdrop-blur-xl bg-[#1A2C2C]/30 border border-[#40E0D0]/20 rounded-2xl p-6 hover:bg-[#1A2C2C]/40 transition-all duration-300"
+                  style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
                   <ul className="space-y-3">
                     {service.description.map((item, i) => (
-                      <motion.li
+                      <li
                         key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 0.1 * (i + 1) }}
                         className="flex items-start gap-3 text-gray-300"
                       >
                         <svg
@@ -130,15 +107,15 @@ export default function ServicesSection() {
                           />
                         </svg>
                         <span>{item}</span>
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 } 
