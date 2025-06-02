@@ -49,11 +49,11 @@ export default function ServicesSection() {
   };
 
   return (
-    <SectionWrapper className="py-20 px-4 relative min-h-screen flex items-center bg-xtyl-black">
-      {/* Gradient Orbs */}
+    <SectionWrapper className="py-20 px-4 relative bg-xtyl-black">
+      {/* Static Gradient Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -left-1/4 top-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-20 animate-pulse" />
-        <div className="absolute -right-1/4 bottom-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-20 animate-pulse delay-1000" />
+        <div className="absolute -left-1/4 top-1/4 w-96 h-96 bg-[#40E0D0] rounded-full filter blur-[128px] opacity-20" />
+        <div className="absolute -right-1/4 bottom-1/4 w-96 h-96 bg-[#4ADE80] rounded-full filter blur-[128px] opacity-20" />
       </div>
 
       <div className="container mx-auto">
