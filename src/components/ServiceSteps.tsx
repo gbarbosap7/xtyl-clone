@@ -5,10 +5,8 @@ const ServiceSteps = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start center", "end center"]
   });
-
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const steps = [
     {
@@ -47,46 +45,49 @@ const ServiceSteps = () => {
 
           {/* Timeline */}
           <div className="md:w-2/3 relative">
-            {/* Linha da Timeline */}
+            {/* Linha da Timeline com animação progressiva */}
             <div className="absolute left-4 top-0 bottom-0 w-px bg-xtyl-primary/20">
               <motion.div
                 className="absolute top-0 w-full bg-xtyl-primary origin-top"
-                style={{ height: lineHeight }}
+                style={{ height: scrollYProgress }}
+                transition={{ duration: 0.3 }}
               />
             </div>
 
             {/* Steps */}
-            <div className="space-y-24">
-              {steps.map((step, index) => (
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="relative pl-12 mb-16 last:mb-0"
+              >
+                {/* Círculo na Timeline com animação de preenchimento */}
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="relative pl-12"
-                >
-                  {/* Círculo na Timeline */}
-                  <motion.div
-                    className="absolute left-0 w-8 h-8 bg-xtyl-black border-2 border-xtyl-primary rounded-full -translate-x-3"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.2 }}
-                  />
-                  
-                  {/* Conteúdo */}
-                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10">
-                    <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-4">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  className="absolute left-0 w-8 h-8 bg-xtyl-black border-2 border-xtyl-primary rounded-full -translate-x-3 flex items-center justify-center transition-colors duration-300"
+                  style={{
+                    backgroundColor: useTransform(
+                      scrollYProgress,
+                      [index / steps.length, (index + 1) / steps.length],
+                      ["#1A2C2C", "#40E0D0"]
+                    )
+                  }}
+                  initial={false}
+                />
+                
+                {/* Conteúdo */}
+                <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 card-hover">
+                  <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-4">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
