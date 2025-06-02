@@ -5,7 +5,7 @@ const ServiceSteps = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start end", "end start"]
   });
 
   const steps = [
@@ -45,12 +45,24 @@ const ServiceSteps = () => {
 
           {/* Timeline */}
           <div className="md:w-2/3 relative">
-            {/* Linha da Timeline com animação progressiva */}
-            <div className="absolute left-4 top-0 bottom-0 w-px bg-xtyl-primary/20">
+            {/* Container da Timeline */}
+            <div className="absolute left-4 top-[40px] bottom-[40px] w-[1px]">
+              {/* Pontos de início e fim */}
+              <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-xtyl-primary" />
+              <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-xtyl-primary/20" />
+              
+              {/* Linha de fundo (não preenchida) */}
+              <div className="absolute inset-0 bg-xtyl-primary/10" />
+              
+              {/* Linha de progresso */}
               <motion.div
                 className="absolute top-0 w-full bg-xtyl-primary origin-top"
-                style={{ height: scrollYProgress }}
-                transition={{ duration: 0.3 }}
+                style={{
+                  scaleY: scrollYProgress,
+                  height: '100%'
+                }}
+                initial={{ scaleY: 0 }}
+                transition={{ duration: 0, ease: "linear" }}
               />
             </div>
 
@@ -64,17 +76,21 @@ const ServiceSteps = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="relative pl-12 mb-16 last:mb-0"
               >
-                {/* Círculo na Timeline com animação de preenchimento */}
+                {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-0 w-8 h-8 bg-xtyl-black border-2 border-xtyl-primary rounded-full -translate-x-3 flex items-center justify-center transition-colors duration-300"
+                  className="absolute left-0 w-8 h-8 -translate-x-3 flex items-center justify-center"
                   style={{
                     backgroundColor: useTransform(
                       scrollYProgress,
-                      [index / steps.length, (index + 1) / steps.length],
+                      [
+                        Math.max(0, (index - 0.5) / steps.length),
+                        (index + 0.5) / steps.length
+                      ],
                       ["#1A2C2C", "#40E0D0"]
-                    )
+                    ),
+                    borderRadius: "50%",
+                    border: "2px solid #40E0D0"
                   }}
-                  initial={false}
                 />
                 
                 {/* Conteúdo */}
