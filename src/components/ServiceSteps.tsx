@@ -64,7 +64,7 @@ const ServiceSteps = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative pl-12 ${index === steps.length - 1 ? '' : 'mb-32'} flex items-start`}
+                className={`relative pl-12 ${index === steps.length - 1 ? '' : 'mb-[8rem]'} flex items-start`}
               >
                 {/* Círculo na Timeline */}
                 <motion.div
@@ -95,13 +95,17 @@ const ServiceSteps = () => {
                 {/* Linha vertical (apenas para o primeiro item) */}
                 {index === 0 && (
                   <div 
-                    className="absolute left-[22px] w-[2px] bg-xtyl-primary/10" 
+                    className="absolute left-[22px] w-[2px]" 
                     style={{ 
                       top: '50%', 
-                      height: `calc(${32 * (steps.length - 1)}px)`,
+                      height: `calc(${8 * (steps.length - 1)}rem)`,
                       transform: 'translateX(-50%)'
                     }}
                   >
+                    {/* Linha de fundo (não preenchida) */}
+                    <div className="absolute inset-0 bg-xtyl-primary/10" />
+                    
+                    {/* Linha de progresso */}
                     <motion.div
                       className="absolute top-0 w-full bg-xtyl-primary origin-top"
                       style={{
