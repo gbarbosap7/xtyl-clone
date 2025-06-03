@@ -98,26 +98,35 @@ const ServiceSteps = () => {
                     className="absolute left-[22px] w-[2px]" 
                     style={{ 
                       top: '50%',
-                      height: `calc(${8 * (steps.length - 1)}rem + 8rem)`,
+                      height: `calc(${8 * (steps.length - 1.5)}rem + 8rem)`, // Reduzindo o comprimento para terminar no meio do último card
                       transform: 'translateX(-50%)'
                     }}
                   >
                     {/* Linha de fundo (não preenchida) */}
                     <div className="absolute inset-0 bg-xtyl-primary/10" />
                     
-                    {/* Linha de progresso */}
+                    {/* Linha de progresso com glow */}
                     <motion.div
-                      className="absolute top-0 w-full bg-xtyl-primary"
+                      className="absolute top-0 w-full"
                       style={{
                         height: useTransform(
-                          scrollYProgress,
+                          smoothProgress, // Usando smoothProgress para animação mais suave
                           [0, 0.2, 0.8, 1],
-                          [0, 0.4, 0.9, 1]
+                          ["0%", "40%", "90%", "100%"]
+                        ),
+                        background: "linear-gradient(180deg, #40E0D0 0%, rgba(64, 224, 208, 0.3) 100%)",
+                        boxShadow: useTransform(
+                          smoothProgress,
+                          [0, 1],
+                          [
+                            "0 0 0 rgba(64, 224, 208, 0)",
+                            "0 0 20px rgba(64, 224, 208, 0.6)"
+                          ]
                         ),
                         opacity: useTransform(
-                          scrollYProgress,
+                          smoothProgress,
                           [0, 0.5, 1],
-                          [0.4, 0.6, 0.8]
+                          [0.4, 0.7, 1]
                         )
                       }}
                     />
