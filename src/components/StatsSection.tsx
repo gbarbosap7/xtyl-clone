@@ -50,7 +50,7 @@ const StatsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 transition-all duration-300 hover:scale-105 group"
+              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 card-hover"
             >
               <motion.h3 
                 initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ const StatsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 transition-all duration-300 hover:scale-105 group"
+              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 card-hover"
             >
               <motion.h3 
                 initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ const StatsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 transition-all duration-300 hover:scale-105 group"
+              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 card-hover"
             >
               <motion.h3 
                 initial={{ opacity: 0, y: 20 }}

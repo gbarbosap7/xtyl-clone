@@ -49,7 +49,7 @@ export default function AdditionalServicesSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl p-8 border border-white/10 card-hover"
+              className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl p-8 card-hover border border-white/5"
             >
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">

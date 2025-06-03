@@ -14,7 +14,7 @@ const WhatsAppSection = () => {
         />
         
         <div className="max-w-3xl mx-auto">
-          <div className="bg-[#0F1A1A] backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10">
+          <div className="bg-[#0F1A1A] backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10 card-hover">
             <p className="text-gray-400 text-lg mb-8">
               Estamos prontos para ajudar! Entre em contato conosco e tire todas as suas dúvidas. Nossa equipe está à disposição para oferecer o suporte que você precisa.
             </p>

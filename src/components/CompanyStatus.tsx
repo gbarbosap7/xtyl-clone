@@ -72,7 +72,7 @@ const CompanyStatus = () => {
               >
                 {/* Card Background */}
                 <div className={`
-                  absolute inset-0 rounded-3xl transition-all duration-300
+                  absolute inset-0 rounded-3xl transition-all duration-300 backdrop-blur-xl
                   ${selectedLevel === level.level 
                     ? 'bg-gradient-to-br from-[#40E0D0] to-[#4ADE80] opacity-20' 
                     : 'bg-white/5 group-hover:bg-white/10'
@@ -80,7 +80,7 @@ const CompanyStatus = () => {
                 `} />
 
                 {/* Card Content */}
-                <div className="relative p-8 backdrop-blur-xl rounded-3xl border border-white/10">
+                <div className="relative z-10 p-8 card-hover rounded-3xl border border-white/10 transition-all duration-300">
                   {/* Level Indicator */}
                   <div className="flex items-center gap-4 mb-6">
                     <span className="text-4xl">{level.icon}</span>

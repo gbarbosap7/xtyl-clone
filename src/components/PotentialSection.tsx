@@ -26,7 +26,7 @@ export default function PotentialSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl p-8 border border-white/10"
+          className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl p-8 border border-white/10 card-hover"
           onMouseMove={handleMouseMove}
         >
           {/* Spotlight Effect */}

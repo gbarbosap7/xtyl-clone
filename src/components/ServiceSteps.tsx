@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 
 const ServiceSteps = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,43 +38,24 @@ const ServiceSteps = () => {
   return (
     <section className="py-20 bg-xtyl-black relative" ref={containerRef}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Título Fixo */}
+        <div className="flex flex-col md:flex-row items-start gap-12">
+          {/* Título e Descrição */}
           <div className="md:w-1/3">
-            <div className="sticky top-20">
-              <h2 className="text-4xl md:text-5xl font-clash-display font-bold text-white mb-6">
-                Nossos Serviços
-              </h2>
-              <p className="text-gray-400 text-lg">
-                Tudo o que fazemos é baseado em <span className="text-xtyl-primary">4 Pilares</span>
+            <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 card-hover">
+              <SectionTitle
+                subtitle="Nossos Serviços"
+                title="Tudo o que fazemos é baseado em 4 Pilares"
+                highlightedWord="4 Pilares"
+                className="mb-6"
+              />
+              <p className="text-gray-300">
+                Nossa metodologia é fundamentada em quatro pilares essenciais que garantem resultados consistentes e crescimento sustentável para nossos clientes.
               </p>
             </div>
           </div>
 
           {/* Timeline */}
           <div className="md:w-2/3 relative">
-            {/* Container da Timeline */}
-            <div className="absolute left-[22px] top-0 bottom-0 w-[2px] flex flex-col">
-              {/* Linha de fundo (não preenchida) */}
-              <div className="absolute inset-0 bg-xtyl-primary/10" />
-              
-              {/* Linha de progresso */}
-              <motion.div
-                className="absolute top-0 w-full bg-xtyl-primary origin-top"
-                style={{
-                  scaleY: smoothProgress,
-                  height: '100%'
-                }}
-                initial={{ scaleY: 0 }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 30,
-                  restDelta: 0.001
-                }}
-              />
-            </div>
-
             {/* Steps */}
             {steps.map((step, index) => (
               <motion.div
@@ -82,40 +64,48 @@ const ServiceSteps = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative pl-12 mb-32 last:mb-0 flex items-start"
+                className={`relative pl-12 ${index === steps.length - 1 ? '' : 'mb-32'} flex items-start`}
               >
                 {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-[22px] top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
-                  style={{
-                    backgroundColor: useTransform(
-                      scrollYProgress,
-                      [
-                        Math.max(0, (index - 0.5) / steps.length),
-                        (index + 0.5) / steps.length
-                      ],
-                      ["#1A2C2C", "#40E0D0"]
-                    ),
-                    boxShadow: useTransform(
-                      scrollYProgress,
-                      [
-                        Math.max(0, (index - 0.5) / steps.length),
-                        (index + 0.5) / steps.length
-                      ],
-                      [
-                        "0 0 0 rgba(64, 224, 208, 0)",
-                        "0 0 20px rgba(64, 224, 208, 0.6)"
-                      ]
-                    )
-                  }}
-                />
+                  className="absolute left-[22px] top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 flex items-center justify-center"
+                >
+                  <div className="w-full h-full rounded-full bg-xtyl-primary/20 card-hover" />
+                </motion.div>
+
+                {/* Linha vertical (apenas para o primeiro item) */}
+                {index === 0 && (
+                  <div 
+                    className="absolute left-[22px] w-[2px] bg-xtyl-primary/10" 
+                    style={{ 
+                      top: '50%', 
+                      height: `calc(${32 * (steps.length - 1)}px)`,
+                      transform: 'translateX(-50%)'
+                    }}
+                  >
+                    <motion.div
+                      className="absolute top-0 w-full bg-xtyl-primary origin-top"
+                      style={{
+                        scaleY: smoothProgress,
+                        height: '100%'
+                      }}
+                      initial={{ scaleY: 0 }}
+                      transition={{ 
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 30,
+                        restDelta: 0.001
+                      }}
+                    />
+                  </div>
+                )}
                 
                 {/* Conteúdo */}
-                <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 card-hover ml-8 flex-1">
-                  <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-4">
+                <div className="flex-1 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 card-hover">
+                  <h3 className="text-2xl font-clash-display font-bold mb-4 text-xtyl-primary">
                     {step.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-gray-300">
                     {step.description}
                   </p>
                 </div>
