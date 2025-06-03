@@ -53,11 +53,7 @@ const ServiceSteps = () => {
           {/* Timeline */}
           <div className="md:w-2/3 relative">
             {/* Container da Timeline */}
-            <div className="absolute left-[22px] top-[40px] bottom-[40px] w-[2px] flex flex-col">
-              {/* Pontos de início e fim */}
-              <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary shadow-glow" />
-              <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary/20" />
-              
+            <div className="absolute left-[22px] top-0 bottom-0 w-[2px] flex flex-col">
               {/* Linha de fundo (não preenchida) */}
               <div className="absolute inset-0 bg-xtyl-primary/10" />
               
@@ -86,11 +82,11 @@ const ServiceSteps = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative pl-12 mb-24 last:mb-0 flex items-start"
+                className="relative pl-12 mb-32 last:mb-0 flex items-start"
               >
                 {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-[22px] top-8 -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
+                  className="absolute left-[22px] top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
                   style={{
                     backgroundColor: useTransform(
                       scrollYProgress,
