@@ -68,10 +68,29 @@ const ServiceSteps = () => {
               >
                 {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-[22px] top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 flex items-center justify-center"
-                >
-                  <div className="w-full h-full rounded-full bg-xtyl-primary/20 card-hover" />
-                </motion.div>
+                  className="absolute left-[22px] top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary z-10"
+                  style={{
+                    backgroundColor: useTransform(
+                      scrollYProgress,
+                      [
+                        Math.max(0, (index - 0.5) / steps.length),
+                        (index + 0.5) / steps.length
+                      ],
+                      ["#1A2C2C", "#40E0D0"]
+                    ),
+                    boxShadow: useTransform(
+                      scrollYProgress,
+                      [
+                        Math.max(0, (index - 0.5) / steps.length),
+                        (index + 0.5) / steps.length
+                      ],
+                      [
+                        "0 0 0 rgba(64, 224, 208, 0)",
+                        "0 0 20px rgba(64, 224, 208, 0.6)"
+                      ]
+                    )
+                  }}
+                />
 
                 {/* Linha vertical (apenas para o primeiro item) */}
                 {index === 0 && (
