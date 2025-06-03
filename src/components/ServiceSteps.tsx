@@ -98,7 +98,7 @@ const ServiceSteps = () => {
                     className="absolute left-[22px] w-[2px]" 
                     style={{ 
                       top: '50%',
-                      height: `calc(${8 * (steps.length - 1)}rem + 4rem)`,
+                      height: `calc(${8 * (steps.length - 1)}rem + 8rem)`,
                       transform: 'translateX(-50%)'
                     }}
                   >
@@ -107,26 +107,18 @@ const ServiceSteps = () => {
                     
                     {/* Linha de progresso */}
                     <motion.div
-                      className="absolute top-0 w-full bg-xtyl-primary origin-top"
+                      className="absolute top-0 w-full bg-xtyl-primary"
                       style={{
-                        scaleY: useTransform(
+                        height: useTransform(
                           scrollYProgress,
                           [0, 0.2, 0.8, 1],
                           [0, 0.4, 0.9, 1]
                         ),
-                        height: '100%',
                         opacity: useTransform(
                           scrollYProgress,
                           [0, 0.5, 1],
                           [0.4, 0.6, 0.8]
                         )
-                      }}
-                      initial={{ scaleY: 0 }}
-                      transition={{ 
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 30,
-                        restDelta: 0.001
                       }}
                     />
                   </div>
