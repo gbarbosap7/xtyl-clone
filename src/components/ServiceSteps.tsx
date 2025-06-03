@@ -53,7 +53,7 @@ const ServiceSteps = () => {
           {/* Timeline */}
           <div className="md:w-2/3 relative">
             {/* Container da Timeline */}
-            <div className="absolute left-4 top-[40px] bottom-[40px] w-[1px] flex flex-col">
+            <div className="absolute left-[22px] top-[40px] bottom-[40px] w-[2px] flex flex-col">
               {/* Pontos de início e fim */}
               <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary" />
               <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary/20" />
@@ -90,7 +90,7 @@ const ServiceSteps = () => {
               >
                 {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-0 -translate-x-[11px] w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
+                  className="absolute left-[22px] -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
                   style={{
                     backgroundColor: useTransform(
                       scrollYProgress,
@@ -104,7 +104,7 @@ const ServiceSteps = () => {
                 />
                 
                 {/* Conteúdo */}
-                <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 card-hover">
+                <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 card-hover ml-8">
                   <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-4">
                     {step.title}
                   </h3>
