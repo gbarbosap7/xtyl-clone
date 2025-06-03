@@ -53,10 +53,10 @@ const ServiceSteps = () => {
           {/* Timeline */}
           <div className="md:w-2/3 relative">
             {/* Container da Timeline */}
-            <div className="absolute left-4 top-[40px] bottom-[40px] w-[1px]">
+            <div className="absolute left-4 top-[40px] bottom-[40px] w-[1px] flex flex-col">
               {/* Pontos de início e fim */}
-              <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-xtyl-primary" />
-              <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-xtyl-primary/20" />
+              <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary" />
+              <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary/20" />
               
               {/* Linha de fundo (não preenchida) */}
               <div className="absolute inset-0 bg-xtyl-primary/10" />
@@ -90,7 +90,7 @@ const ServiceSteps = () => {
               >
                 {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-0 w-8 h-8 -translate-x-3 flex items-center justify-center"
+                  className="absolute left-0 -translate-x-[11px] w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
                   style={{
                     backgroundColor: useTransform(
                       scrollYProgress,
@@ -99,9 +99,7 @@ const ServiceSteps = () => {
                         (index + 0.5) / steps.length
                       ],
                       ["#1A2C2C", "#40E0D0"]
-                    ),
-                    borderRadius: "50%",
-                    border: "2px solid #40E0D0"
+                    )
                   }}
                 />
                 
