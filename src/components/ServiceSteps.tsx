@@ -55,7 +55,7 @@ const ServiceSteps = () => {
             {/* Container da Timeline */}
             <div className="absolute left-[22px] top-[40px] bottom-[40px] w-[2px] flex flex-col">
               {/* Pontos de início e fim */}
-              <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary" />
+              <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary shadow-glow" />
               <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-xtyl-primary/20" />
               
               {/* Linha de fundo (não preenchida) */}
@@ -86,11 +86,11 @@ const ServiceSteps = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative pl-12 mb-16 last:mb-0"
+                className="relative pl-12 mb-24 last:mb-0 flex items-start"
               >
                 {/* Círculo na Timeline */}
                 <motion.div
-                  className="absolute left-[22px] -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
+                  className="absolute left-[22px] top-8 -translate-x-1/2 w-6 h-6 flex items-center justify-center rounded-full border-2 border-xtyl-primary"
                   style={{
                     backgroundColor: useTransform(
                       scrollYProgress,
@@ -99,12 +99,23 @@ const ServiceSteps = () => {
                         (index + 0.5) / steps.length
                       ],
                       ["#1A2C2C", "#40E0D0"]
+                    ),
+                    boxShadow: useTransform(
+                      scrollYProgress,
+                      [
+                        Math.max(0, (index - 0.5) / steps.length),
+                        (index + 0.5) / steps.length
+                      ],
+                      [
+                        "0 0 0 rgba(64, 224, 208, 0)",
+                        "0 0 20px rgba(64, 224, 208, 0.6)"
+                      ]
                     )
                   }}
                 />
                 
                 {/* Conteúdo */}
-                <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 card-hover ml-8">
+                <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 card-hover ml-8 flex-1">
                   <h3 className="text-2xl font-clash-display font-bold text-xtyl-primary mb-4">
                     {step.title}
                   </h3>
